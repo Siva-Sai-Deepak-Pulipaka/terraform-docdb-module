@@ -23,7 +23,7 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
 # creating subnet group for azones
 resource "aws_docdb_subnet_group" "main" {
   name       = "${var.env}-docdb"
-  db_subnet_ids = var.db_subnet_ids
+  subnet_ids = var.subnet_ids
 
   tags = merge(
     var.tags,
