@@ -14,10 +14,10 @@ resource "aws_docdb_cluster" "main" {
 
 # document db works only when there is instance
 resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = 2
-  identifier         = "docdb-cluster-demo-${count.index}"
-  cluster_identifier = aws_docdb_cluster.default.id
-  instance_class     = "db.r5.large"
+  count              = var.no_of_instances
+  identifier         = "${var.env}-docdb-${count.index}"
+  cluster_identifier = aws_docdb_cluster.main.id
+  instance_class     = var.instance_class
 }
 
 # creating subnet group for azones
